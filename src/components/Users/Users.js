@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Switch, Route, useRouteMatch} from 'react-router-dom'
 import axios from 'axios'
 
+import User from "../User/User";
+
 function Users() {
+  const {path, url} = useRouteMatch();
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -21,10 +24,20 @@ function Users() {
         {
           !loading &&
           users.map((user) => <li key={user.id}>
-            <Link to={`user/${user.id}`} >{user.name}
+            <Link to={`${url}/${user.id}`} >{user.name}
             </Link>
           </li>)
         }
+
+        <Switch>
+          <Route exact path={path}>
+            <h3>Please select a user.</h3>
+          </Route>
+          <Route 
+            path={`${path}/:id`} component={User} 
+          />
+        </Switch>
+
       </ul>
     </div>
   )

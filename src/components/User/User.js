@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import {useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 
 function User() {
   const {id} = useParams()
@@ -28,6 +28,14 @@ function User() {
           <p>City : {user.address.city}</p>
         </div>
       }
+
+    <br />
+    <br />
+
+      <Link to={`/user/${parseInt(id) + 1}`}>
+        Next User ({parseInt(id)+1})
+      </Link>
+
     </div>
   )
 }

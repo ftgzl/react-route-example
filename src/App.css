@@ -9,3 +9,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.active {
+  background-color: #141414;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}

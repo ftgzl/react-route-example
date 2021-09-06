@@ -1,14 +1,14 @@
+import './App.css'
 import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  NavLink
 } from "react-router-dom";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Users from "./components/Users/Users";
-import User from "./components/User/User";
 
 export default function App() {
   return (
@@ -17,13 +17,14 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink  
+                exact activeClassName="active" to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink activeClassName="active" to="/about">About</NavLink>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <NavLink activeClassName="active" to="/users">Users</NavLink>
             </li>
           </ul>
         </nav>
@@ -32,7 +33,6 @@ export default function App() {
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
           <Route path="/users" component={Users} />
-          <Route path="/user/:id" component={User} />
         </Switch>
       </div>
     </Router>
